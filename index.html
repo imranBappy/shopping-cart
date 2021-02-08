@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Shopping Cart</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+   <link href="style.css" rel="stylesheet">
+</head>
+<body>
+   <section>
+      <div class="container">
+         <div class="cart">
+            <div class="col-md-12 col-lg-10 mx-auto">
+               <div id="remove-area" class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item">
+                        <img src="images/product-1.png" alt="">
+                        <h5>iPhone 11 128GB Black</h5>
+                     </div>
+                     <!---------Fast iPhone area ---------------->
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="2nd-minusBtnB" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <span id="first-iPhone-price" class="form-control text-center" >1</span>
+                            <!---------Fast iPhone button area ---------------->
+                           <button id="fist-plusBtnA" class="btn btn-default "><i class="fas fa-plus"></i></button>
+                        </div>
+                        <h5 > $<span  id="iPhoneMainPrice">1219</span></h5>
+                        <button id="remove"><img src="images/remove.png" alt="" class="remove-item"></button>
+                     </div>
+                  </div>
+               </div>
+               <div id = "remove-area-a" class="cart-item">
+                  <div class="row">
+                     <div class="col-md-7 center-item mx-auto">
+                        <img src="images/product-2.png" alt="">
+                        <h5>iPhone 11 Silicone Case - Black</h5>
+                     </div>
+                      <!---------2nd iPhone area ---------------->
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="2nd-minus-btn-B" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <span id = "plus-value" class="form-control text-center" >1</span>
+                           <button id="2nd-plusBtnA" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <h5>$ <span id="SEplusValue"> 190 </span> </h5>
+                        <button id="remove-a"><img src="images/remove.png" alt="" class="remove-item"></button>
+                     </div>
+                  </div>
+               </div>
+               <div class="cart-item">
+                  <div class="row">
+                     <div class="col-md-8">
+                        <h5>Subtotal: </h5>
+                        <h5>Tax:</h5>
+                        <h5>Total:</h5>
+                     </div>
+                     <div class="col-md-4 status">
+                        <h5>$ <span id="subtotal"></span> </h5>
+                        <h5>$ <span id="tax">4</span> </h5>
+                        <h5>$ <span id="main-price" ></span> </h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12 pt-4 pb-4">
+                  <button type="button" class="btn btn-success check-out">Check Out</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <script>
+      const removeBtn =document.getElementById("remove");
+      removeBtn.addEventListener("click", function(){
+         const removeArea = document.getElementById("remove-area");
+         removeArea.style.display = "none";
+         const valueIn = document.getElementById("first-iPhone-price").textContent;
+         const all =  parseFloat(valueIn) * 2 ;
+         const firstTax = document.getElementById("tax").textContent  ;
+         const firstTaxNumber = parseFloat(firstTax) - all ;
+         document.getElementById("tax").innerHTML = firstTaxNumber ;
+         const mainPrice = document.getElementById("main-price").textContent ;
+         const mainPriceNumber = parseFloat(mainPrice) - firstTaxNumber ;
+         document.getElementById("main-price").innerHTML = mainPriceNumber ;
+         const gun = document.getElementById("iPhoneMainPrice").textContent;
+         const gunNumber = parseFloat(gun) ;
+         const gunA = document.getElementById("subtotal").textContent;
+         const gunNumberA = parseFloat(gunA) - gunNumber ;
+         document.getElementById("subtotal").innerHTML = gunNumberA ;
+         const firstTaxA = document.getElementById("tax").textContent  ;
+         const firstTaxNumberA = parseFloat(firstTaxA) ;
+         const mainPriceA = document.getElementById("subtotal").textContent ;
+         const mainPriceNumberA = parseFloat(mainPriceA) + firstTaxNumberA ;
+         document.getElementById("main-price").innerHTML = mainPriceNumberA ;
+      })
+      const removeBtn2 =document.getElementById("remove-a");
+      removeBtn2.addEventListener("click" , function(){
+         const removeAreaA = document.getElementById("remove-area-a") ;
+         removeAreaA.style.display = "none";
+         const valueIn = document.getElementById("plus-value").textContent;
+         const all =  parseFloat(valueIn) * 2 ;
+         const firstTax = document.getElementById("tax").textContent  ;
+         const firstTaxNumber = parseFloat(firstTax) - all ;
+         document.getElementById("tax").innerHTML = firstTaxNumber ;
+         const mainPrice = document.getElementById("main-price").textContent ;
+         const mainPriceNumber = parseFloat(mainPrice) - firstTaxNumber ;
+         document.getElementById("main-price").innerHTML = mainPriceNumber ;
+         const gun = document.getElementById("SEplusValue").textContent;
+         const gunNumber = parseFloat(gun)
+         const gunA = document.getElementById("subtotal").textContent;
+         const gunNumberA = parseFloat(gunA) - gunNumber ;
+         document.getElementById("subtotal").innerHTML = gunNumberA ;
+         const firstTaxA = document.getElementById("tax").textContent  ;
+         const firstTaxNumberA = parseFloat(firstTaxA) ;
+         console.log(firstTaxNumberA);
+         const mainPriceA = document.getElementById("subtotal").textContent ;
+         const mainPriceNumberA = parseFloat(mainPriceA) + firstTaxNumberA ;
+         console.log(mainPriceNumberA);
+         document.getElementById("main-price").innerHTML = mainPriceNumberA ;
+      })
+   // remove area top ////////////////
+   const gun = document.getElementById("iPhoneMainPrice").textContent;
+   const gunNumber = parseFloat(gun)
+   const allMainPrice = document.getElementById("SEplusValue").textContent;
+   const allMainPriceNumber = parseFloat(allMainPrice)
+   const allOutputPrice = gunNumber + allMainPriceNumber ;
+   document.getElementById("subtotal").innerHTML = allOutputPrice ;
+   const firstTax = document.getElementById("tax").textContent  ;
+   const firstTaxNumber = parseFloat(firstTax) + allOutputPrice ;
+   document.getElementById("main-price").innerHTML = firstTaxNumber ;
+   // price add btn bottom 
+      const plusBtnA = document.getElementById("fist-plusBtnA");
+      plusBtnA.addEventListener("click" , function(){
+         const valueIn = document.getElementById("first-iPhone-price").textContent;
+         const all =  parseFloat(valueIn) + 1 ;
+            if( all <= 10  ){
+                  document.getElementById("first-iPhone-price").innerHTML = all ;
+                  const gun = document.getElementById("iPhoneMainPrice").textContent;
+                  const numberGun = parseFloat(gun) + 1219 ;
+                  document.getElementById("iPhoneMainPrice").innerHTML = numberGun ;
+                  const subTotalMain = document.getElementById("subtotal").textContent ;
+                  const subTotalMainNumber = parseFloat(subTotalMain) + 1219 ; 
+                  document.getElementById("subtotal").innerHTML = subTotalMainNumber ;
+                  const firstTax = document.getElementById("tax").textContent ;
+                  const firstTaxNumber = parseFloat(firstTax) + 2 ;
+                  document.getElementById("tax").innerHTML = firstTaxNumber ;
+                  const totalPrice = subTotalMainNumber + firstTaxNumber ;
+                  document.getElementById("main-price").innerHTML = totalPrice ;
+                  return totalPrice ;
+        }
+      })
+      
+      
+    //  price minus btn bottom 
+      const minusBtnB = document.getElementById("2nd-minusBtnB")
+      minusBtnB.addEventListener("click" , function(){
+         const minusValue =document.getElementById("first-iPhone-price").textContent ;
+         const minusValueNumber = parseFloat(minusValue);
+         var outputMinusPrice = minusValueNumber - 1 ;
+         if( 1 <= outputMinusPrice ){
+         document.getElementById("first-iPhone-price").innerHTML = outputMinusPrice;
+         var mainPrice = document.getElementById("iPhoneMainPrice").textContent ;
+         var mainPriceNumber = parseFloat(mainPrice) - 1219 ;
+         document.getElementById("iPhoneMainPrice").innerHTML = mainPriceNumber ;
+         var subTotal = document.getElementById("subtotal").textContent ;
+         var subtotalNumber = parseFloat(subTotal) - 1219 ;
+         document.getElementById("subtotal").innerHTML = subtotalNumber ;
+         const firstTax = document.getElementById("tax").textContent ;
+         const firstTaxNumber = parseFloat(firstTax) - 2 ;
+         document.getElementById("tax").innerHTML = firstTaxNumber ;
+         const totalPrice = subtotalNumber + firstTaxNumber ;
+         document.getElementById("main-price").innerHTML = totalPrice ;
+         }
+      })
+      // TOP IS CORD ONE AREA 
+      const SEplusBtnA = document.getElementById("2nd-plusBtnA")  ;
+      SEplusBtnA.addEventListener("click" , function(){
+         const plusValue = document.getElementById("plus-value").textContent ;
+         const plusValueNumber = parseFloat(plusValue) + 1 ;
+         if( plusValueNumber <= 15  ){
+         document.getElementById("plus-value").innerHTML = plusValueNumber ;
+         const SEplusBtnAIn = document.getElementById("SEplusValue").textContent ; 
+         const SEplusBtnAInNumber = parseFloat(SEplusBtnAIn) + 190 ;
+         document.getElementById("SEplusValue").innerHTML = SEplusBtnAInNumber;
+         const subTotalB = document.getElementById("subtotal").textContent ;
+         const subTotalBNumber = parseFloat(subTotalB) + 190 ;
+         document.getElementById("subtotal").innerHTML = subTotalBNumber ;
+         const firstTax = document.getElementById("tax").textContent ;
+         const firstTaxNumber = parseFloat(firstTax) + 2 ;
+         document.getElementById("tax").innerHTML = firstTaxNumber ;
+         const totalPrice = subTotalBNumber + firstTaxNumber ;
+         document.getElementById("main-price").innerHTML = totalPrice ;
+         }
+               })
+      const SEMinusBtnB = document.getElementById("2nd-minus-btn-B") ;
+      SEMinusBtnB.addEventListener("click" , function (){
+         const minusValue = document.getElementById("plus-value").textContent ;
+         const minusValueNumber = parseFloat(minusValue) - 1 ;
+         if( 1 <= minusValueNumber ){
+         document.getElementById("plus-value").innerHTML = minusValueNumber ;
+         const SEplusValue = document.getElementById("SEplusValue").textContent ;
+         const SEplusValueNumber = parseFloat(SEplusValue) - 190 ;
+         document.getElementById("SEplusValue").innerHTML = SEplusValueNumber ;
+         const subTotalBA = document.getElementById("subtotal").textContent ;
+         const subTotalBNumberA = parseFloat(subTotalBA) - 190 ;
+         document.getElementById("subtotal").innerHTML = subTotalBNumberA ;
+         const firstTax = document.getElementById("tax").textContent ;
+         const firstTaxNumber = parseFloat(firstTax) - 2 ;
+         document.getElementById("tax").innerHTML = firstTaxNumber ;
+         const totalPrice = subTotalBNumberA + firstTaxNumber ;
+         document.getElementById("main-price").innerHTML = totalPrice ;
+         }
+      })
+   </script>
+</body>
+
+</html>
